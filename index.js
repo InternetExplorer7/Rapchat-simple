@@ -1,9 +1,6 @@
-const express = require('express');
+var server = require('pushstate-server');
 
-const app = express();
-
-console.log('./build');
-
-app.use(express.static('./build'));
-
-app.listen(process.env.PORT || 3000);
+server.start({
+    port: process.env.PORT || 8080,
+    directory: './build'
+}) 
