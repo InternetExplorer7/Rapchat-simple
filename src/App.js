@@ -40,7 +40,7 @@ class Body extends Component {
   }
 
   fetchRapchatData() {
-    fetch('http://www.kavehkhorr.am/rapchat/user/80229AD4-F3B9-4675-B70B-F8F9BAF7D889', { method: 'POST' }).then(response => {
+    fetch('https://www.kavehkhorr.am/rapchat/user/80229AD4-F3B9-4675-B70B-F8F9BAF7D889', { method: 'POST' }).then(response => {
       return response.json();
     }).then(response => {
       this.setState({
