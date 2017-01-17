@@ -18,6 +18,7 @@ class Body extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      profilePhotoURL: 'https://mir-s3-cdn-cf.behance.net/project_modules/disp/585d0331234507.564a1d239ac5e.gif',
       username: '(loading)',
       location: {
         city: '(loading)',
@@ -45,6 +46,7 @@ class Body extends Component {
       return response.json();
     }).then(response => {
       this.setState({
+        profilePhotoURL: 'https://rapchat.blob.core.windows.net/images/' + response.data.profilephoto,
         username: response.data.username,
         location: {
           city: response.data.location.city,
@@ -72,7 +74,7 @@ class Body extends Component {
     return (
       <div id="wrapper">
         <header id="header" className="alt">
-          <span className="logo"><img src={profileFiller} alt="profile"/></span>
+          <span className="logo"><img src={this.state.profilePhotoURL} alt="profile"/></span>
           <h1>{this.state.username}</h1>
           <p>{this.state.location.city}, {this.state.location.state}</p>
           <ul className="actions">
