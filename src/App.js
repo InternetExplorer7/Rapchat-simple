@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
+import './styles/main.css';
 import profileFiller from './zucc.jpg';
 
 class App extends Component {
@@ -60,46 +61,76 @@ class Body extends Component {
         otherURL: response.data.otherlink,
         otherURLImage: 'https://iconalone.com/sites/default/files/styles/220x220/public/Web%20link.svg_0.png?itok=eomBRT0O'
       })
-    });
+    }).catch(e => {
+      // If an error occurs, recall.
+      this.fetchRapchatData();
+    })
   }
 
   render() {
     console.log(JSON.stringify(this.state));
     return (
-      <div>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col s4"/>
-            <div className="col s4 center">
-              <img src={profileFiller} id="profileimage" className="circle" role="presentation"/>
-              <h3>@{this.state.username}</h3>
-              <p>{this.state.location.city}, {this.state.location.state}</p>
-            </div>
-            <div className="col s4">
-              <a target="_blank" href={this.state.soundcloudURL}><img src={this.state.soundcloudImage} role="presentation" className="circle icons"/></a>
-              <a target="_blank" href={this.state.twitterURL}><img src={this.state.twitterImage} role="presentation" className="icons"/></a>
-              <a target="_blank" href={this.state.otherURL}><img src={this.state.otherURLImage} className="icons" role="presentation"/></a>
-            </div>
-          </div>
-        </div>
-        <div className="container">
-          <div className="row">
-            <div className="col s3">
-              <h3 className="center">{this.state.raps}<br/> <span> raps </span> </h3>
-            </div>
-            <div className="col s3">
-              <h3 className="center">{this.state.likes} <br/> <span> likes </span> </h3>
-            </div>
-            <div className="col s3">
-              <h3 className="center">{this.state.fans} <br/> <span> fans </span> </h3>
-            </div>
-            <div className="col s3">
-              <h3 className="center">{this.state.following} <br/> <span> following </span> </h3>
-            </div>
-          </div>
-          <div className="row center">
-            <a id="getapp" href="https://bnc.lt/getRC">GET APP</a>
-          </div>
+      <div id="wrapper">
+        <header id="header" className="alt">
+          <span className="logo"><img src={profileFiller} alt="profile"/></span>
+          <h1>{this.state.username}</h1>
+          <p>{this.state.location.city}, {this.state.location.state}</p>
+          <ul className="actions">
+          <li><a target="blank" href={this.state.soundcloudURL}><img src={this.state.soundcloudImage} role="presentation" height="50px" width="50px"/></a></li>
+          <li><a target="blank" href={this.state.twitterURL}><img src={this.state.twitterImage} role="presentation" height="50px" width="50px"/></a></li>
+          <li><a target="blank" href={this.state.otherURL}><img src={this.state.otherURLImage} role="presentation" height="50px" width="50px"/></a></li>
+          </ul>
+        </header>
+        <div id="main">
+          <section id="intro" className="main">
+              <div className="spotlight">
+                <div className="content">
+                  <header className="major">
+                    <h2>Raps</h2>
+                  </header>
+                  <h1>{this.state.raps}</h1>
+                </div>
+              </div>
+          </section>
+          <section id="first" className="main">
+              <div className="spotlight">
+                <div className="content">
+                  <header className="major">
+                    <h2>Likes</h2>
+                  </header>
+                  <h1>{this.state.likes}</h1>
+                </div>
+              </div>
+          </section>
+          <section id="second" className="main">
+              <div className="spotlight">
+                <div className="content">
+                  <header className="major">
+                    <h2>Fans</h2>
+                  </header>
+                  <h1>{this.state.fans}</h1>
+                </div>
+              </div>
+          </section>
+          <section id="third" className="main">
+              <div className="spotlight">
+                <div className="content">
+                  <header className="major">
+                    <h2>Following</h2>
+                  </header>
+                  <h1>{this.state.following}</h1>
+                </div>
+              </div>
+          </section>
+          <section id="fourth" className="main">
+              <div className="spotlight">
+                <div className="content">
+                  <ul className="actions">
+                    <li className="center"><a target="blank" className="center hero" href="https://bnc.lt/getRC">OPEN APP</a></li>
+                  </ul>
+                </div>
+              </div>
+          </section>
         </div>
       </div>
     )
@@ -110,8 +141,8 @@ class Navbar extends Component {
   render() {
     return (
       <nav>
-        <div className="nav-wrapper black">
-          <img role="presentation" src="https://pbs.twimg.com/profile_images/713051224052903936/BVNcagVM.jpg" className="brand-logo" height="100%" width="50px"/>
+        <div className="black">
+          <a target="blank" href="https://rapchat.me"><img role="presentation" src="https://pbs.twimg.com/profile_images/713051224052903936/BVNcagVM.jpg" className="brand-logo" height="100%" width="50px"/></a>
         </div>
       </nav>
     )
